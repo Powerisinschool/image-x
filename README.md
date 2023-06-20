@@ -34,7 +34,7 @@ The API documentation is generated using Swagger/OpenAPI and can be accessed at 
 
 ## API Endpoints
 
-- `POST /api/convert/format`: Convert image format.
+- `POST /api/convert`: Convert image format.
 - `POST /api/resize`: Resize image.
 - `POST /api/filter`: Apply filter to image.
 - `POST /api/crop`: Crop image.
@@ -46,7 +46,7 @@ The API documentation is generated using Swagger/OpenAPI and can be accessed at 
 
 ### Convert Image Format
 
-Convert the image format by sending a POST request to '/api/convert/format' endpoint with the following parameters:
+Convert the image format by sending a POST request to '/api/convert' endpoint with the following parameters:
 
 - `file`: Image file to convert (multipart/form-data)
 - `format`: Target format to convert to (multipart/form-data)
@@ -54,7 +54,7 @@ Convert the image format by sending a POST request to '/api/convert/format' endp
 Example request using cURL:
 
 ```bash
-curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" http://imagex.toluolagunju.tech/api/convert/format
+curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" http://imagex.toluolagunju.tech/api/convert
 ```
 
 ### Resize Image
