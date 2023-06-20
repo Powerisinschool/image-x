@@ -29,6 +29,36 @@ paths:
           schema:
             type: string
       summary: Convert Image Format
+  /filter:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Apply the specified filter to the image
+      parameters:
+      - description: Image file to apply filter
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: 'Filter to apply: grayscale, sepia, blur, sharpen'
+        in: formData
+        name: filter
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Filtered image
+          schema:
+            type: string
+        "400":
+          description: Invalid request or parameters
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Apply filter to image
   /resize:
     post:
       consumes:

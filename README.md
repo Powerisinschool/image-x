@@ -54,7 +54,7 @@ Convert the image format by sending a POST request to '/api/convert' endpoint wi
 Example request using cURL:
 
 ```bash
-curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" http://imagex.toluolagunju.tech/api/convert
+curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" https://imagex.toluolagunju.tech/api/convert
 ```
 
 ### Resize Image
@@ -69,6 +69,24 @@ Resize the image by sending a POST request to '/api/resize' endpoint with the fo
 Example request using cURL:
 
 ```bash
-curl -X POST -F "file=@/path/to/image.jpg" -F "width=800" -F "height=600" -F "quality=80" http://imagex.toluolagunju.tech/api/resize
+curl -X POST -F "file=@/path/to/image.jpg" -F "width=800" -F "height=600" -F "quality=high" https://imagex.toluolagunju.tech/api/resize
 ```
+
+### Apply Filter to Image
+
+Apply the specified filter to the image by sending a POST request to '/api/filter' endpoint with the following parameters:
+
+- `file`: Image file to apply the filter (multipart/form-data)
+- `filter`: Filter to apply: grayscale, sepia, blur, sharpen (multipart/form-data)
+
+Example request using cURL:
+
+```bash
+curl -X POST -F "file=@/path/to/image.jpg" -F "filter=grayscale" https://imagex.toluolagunju.tech/api/filter
+```
+
+**Note:** The supported filters are 'grayscale', 'sepia', 'blur', and 'sharpen'.
+
+The response will be the filtered image.
+
 

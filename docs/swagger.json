@@ -44,6 +44,51 @@
                 }
             }
         },
+        "/filter": {
+            "post": {
+                "description": "Apply the specified filter to the image",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "summary": "Apply filter to image",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "Image file to apply filter",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Filter to apply: grayscale, sepia, blur, sharpen",
+                        "name": "filter",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Filtered image",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request or parameters",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/resize": {
             "post": {
                 "description": "Resize the image",
