@@ -37,7 +37,7 @@ func main() {
 	docs.SwaggerInfo.Title = "ImageX API"
 	docs.SwaggerInfo.Description = "This is an Image Conversion server."
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Schemes = []string{"https"}
+	docs.SwaggerInfo.Schemes = []string{"https", "http"}
 
 	r := gin.Default()
 
