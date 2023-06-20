@@ -1,0 +1,76 @@
+basePath: /api
+info:
+  contact: {}
+  description: API endpoints for image conversion
+  title: Image Conversion API
+  version: "1.0"
+paths:
+  /convert:
+    post:
+      description: Convert the image format of an uploaded image
+      parameters:
+      - description: Image file to convert
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: Target format to convert to
+        in: formData
+        name: format
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Conversion successful
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            type: string
+      summary: Convert Image Format
+  /resize:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Resize the image
+      parameters:
+      - description: Image file to resize
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: Target width for resizing
+        in: formData
+        name: width
+        required: true
+        type: integer
+      - description: Target height for resizing
+        in: formData
+        name: height
+        required: true
+        type: integer
+      - description: 'Quality level for resizing: low, medium, high, best'
+        in: formData
+        name: quality
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Resize successful
+          schema:
+            type: string
+        "400":
+          description: Bad request
+          schema:
+            type: string
+        "404":
+          description: Page Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Resize Image
+swagger: "2.0"
