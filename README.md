@@ -5,7 +5,7 @@ This is an API for image conversion, built using Go and the Gin framework.
 ## API Documentation
 
 The API documentation is generated using Swagger/OpenAPI and can be accessed at the following endpoint:
-[localhost/docs/index.html](http://localhost:8080/docs/index.html)
+[ImageX Docs](https://imagex.toluolagunju.tech/docs/index.html)
 
 
 ## Installation
@@ -54,7 +54,7 @@ Convert the image format by sending a POST request to '/api/convert/format' endp
 Example request using cURL:
 
 ```bash
-curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" http://localhost:8080/api/convert/format
+curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" http://imagex.toluolagunju.tech/api/convert/format
 ```
 
 ### Resize Image
@@ -69,6 +69,6 @@ Resize the image by sending a POST request to '/api/resize' endpoint with the fo
 Example request using cURL:
 
 ```bash
-curl -X POST -F "file=@/path/to/image.jpg" -F "width=800" -F "height=600" -F "quality=80" http://localhost:8080/api/resize
+curl -X POST -F "file=@/path/to/image.jpg" -F "width=800" -F "height=600" -F "quality=80" http://imagex.toluolagunju.tech/api/resize
 ```
 
