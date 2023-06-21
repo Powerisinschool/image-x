@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	"bytes"
 	"net/http"
+	"strconv"
 
 	"github.com/Powerisinschool/image-x/filter"
 	"github.com/Powerisinschool/image-x/loadx"
@@ -16,6 +18,7 @@ import (
 //	@Accept			multipart/form-data
 //	@Param			file	formData	file	true	"Image file to apply filter"
 //	@Param			filter	formData	string	true	"Filter to apply: grayscale, sepia, blur, sharpen"
+//	@Param			radius	query		int		false	"Blur radius (applicable only for 'blur' filter)"
 //	@Success		200		{string}	string	"Filtered image"
 //	@Failure		400		{string}	string	"Invalid request or parameters"
 //	@Failure		500		{string}	string	"Internal server error"
@@ -45,7 +48,20 @@ func ApplyFilterHandler(c *gin.Context) {
 		return
 	}
 
-	buf, err := filter.Filter(img, req.Filter)
+	var buf bytes.Buffer
+
+	// Handle the blur filter separately to include the radius query parameter
+	if req.Filter == "blur" {
+		radius, err := strconv.Atoi(c.Query("radius"))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid radius", "message": err.Error()})
+			return
+		}
+		buf, err = filter.Filter(img, req.Filter, &filter.FilterOptions{Radius: radius})
+	} else {
+		buf, err = filter.Filter(img, req.Filter, &filter.FilterOptions{})
+	}
+
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to encode image", "message": err.Error()})
 		return

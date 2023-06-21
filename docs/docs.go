@@ -73,6 +73,12 @@ const docTemplate = `{
                         "name": "filter",
                         "in": "formData",
                         "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Blur radius (applicable only for 'blur' filter)",
+                        "name": "radius",
+                        "in": "query"
                     }
                 ],
                 "responses": {
