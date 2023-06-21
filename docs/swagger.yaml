@@ -45,7 +45,7 @@ paths:
         name: filter
         required: true
         type: string
-      - description: Blur radius (applicable only for 'blur' filter)
+      - description: 'Blur radius (applicable only for ''blur'' filter) default: 2'
         in: query
         name: radius
         type: integer
@@ -107,4 +107,33 @@ paths:
           schema:
             type: string
       summary: Resize Image
+  /upscale:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Upscale the image by the specified scale
+      parameters:
+      - description: Image file to upscale
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: 'Upscale scale (default: 2)'
+        in: query
+        name: scale
+        type: integer
+      responses:
+        "200":
+          description: Upscaled image
+          schema:
+            type: string
+        "400":
+          description: Invalid request or parameters
+          schema:
+            type: string
+        "500":
+          description: Internal server error
+          schema:
+            type: string
+      summary: Upscale image
 swagger: "2.0"

@@ -52,6 +52,6 @@ func ResizeHandler(c *gin.Context) {
 		return
 	}
 
-	// Return the converted image as the response
+	// Return the resized image as the response
 	c.Data(http.StatusOK, "image/webp", buf.Bytes())
 }

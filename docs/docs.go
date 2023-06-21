@@ -76,7 +76,7 @@ const docTemplate = `{
                     },
                     {
                         "type": "integer",
-                        "description": "Blur radius (applicable only for 'blur' filter)",
+                        "description": "Blur radius (applicable only for 'blur' filter) default: 2",
                         "name": "radius",
                         "in": "query"
                     }
@@ -155,6 +155,50 @@ const docTemplate = `{
                     },
                     "404": {
                         "description": "Page Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/upscale": {
+            "post": {
+                "description": "Upscale the image by the specified scale",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "summary": "Upscale image",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "Image file to upscale",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Upscale scale (default: 2)",
+                        "name": "scale",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Upscaled image",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request or parameters",
                         "schema": {
                             "type": "string"
                         }

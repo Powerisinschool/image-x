@@ -18,7 +18,7 @@ import (
 //	@Accept			multipart/form-data
 //	@Param			file	formData	file	true	"Image file to apply filter"
 //	@Param			filter	formData	string	true	"Filter to apply: grayscale, sepia, blur, sharpen"
-//	@Param			radius	query		int		false	"Blur radius (applicable only for 'blur' filter)"
+//	@Param			radius	query		int		false	"Blur radius (applicable only for 'blur' filter) default: 2"
 //	@Success		200		{string}	string	"Filtered image"
 //	@Failure		400		{string}	string	"Invalid request or parameters"
 //	@Failure		500		{string}	string	"Internal server error"
@@ -52,7 +52,12 @@ func ApplyFilterHandler(c *gin.Context) {
 
 	// Handle the blur filter separately to include the radius query parameter
 	if req.Filter == "blur" {
-		radius, err := strconv.Atoi(c.Query("radius"))
+		var radius int
+		if c.Query("radius") == "" {
+			radius = 2
+		} else {
+			radius, err = strconv.Atoi(c.Query("radius"))
+		}
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid radius", "message": err.Error()})
 			return

@@ -21,3 +21,9 @@ type ApplyFilterRequest struct {
 	File   *multipart.FileHeader `form:"file" binding:"required"`
 	Filter string                `form:"filter" binding:"required,oneof=grayscale sepia blur sharpen"`
 }
+
+// UpscaleRequest represents the request body for the upscale endpoint
+type UpscaleRequest struct {
+	File   *multipart.FileHeader `form:"file" binding:"required"`
+	// Scale  int                   `form:"scale" binding:"required,oneof=2 3 4"`
+}

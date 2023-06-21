@@ -42,6 +42,7 @@ func main() {
 	r.POST("/api/convert", handlers.ConvertFormatHandler)
 	r.POST("/api/resize", handlers.ResizeHandler)
 	r.POST("/api/filter", handlers.ApplyFilterHandler)
+	r.POST("/api/upscale", handlers.UpscaleHandler)
 	r.POST("/api/crop", cropImageHandler)
 	r.POST("/api/rotate", rotateImageHandler)
 	r.POST("/api/compress", compressImageHandler)

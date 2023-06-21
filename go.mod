@@ -8,6 +8,8 @@ require (
 	github.com/swaggo/gin-swagger v1.6.0
 )
 
+require github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
+
 require (
 	github.com/KyleBanks/depth v1.2.1 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
@@ -26,6 +28,7 @@ require (
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.5 // indirect
+	github.com/kodeworks/golang-image-ico v0.0.0-20141118225523-73f0f4cfade9
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
@@ -35,6 +38,7 @@ require (
 	github.com/swaggo/swag v1.16.1
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
+	github.com/vldrus/golang/image v0.0.0-20201121192557-8b031f108b16
 	golang.org/x/arch v0.3.0 // indirect
 	golang.org/x/crypto v0.10.0 // indirect
 	golang.org/x/image v0.8.0
