@@ -17,5 +17,11 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+DIV2K/
+
 # Go workspace file
 go.work
+# image-x
+*.jpg
+*.png
+*.ipynb

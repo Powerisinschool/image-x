@@ -8,11 +8,13 @@ import (
 	"image/jpeg"
 	"image/png"
 
+	"github.com/vldrus/golang/image/ico"
+
 	"github.com/Powerisinschool/image-x/match"
 	"github.com/chai2010/webp"
 )
 
-var supportedFormats = []string{"png", "jpeg", "webp", "gif"}
+var supportedFormats = []string{"png", "jpeg", "webp", "gif", "ico"}
 
 // Pixel struct example
 type Pixel struct {
@@ -39,6 +41,8 @@ func Convert(img image.Image, format string) (bytes.Buffer, error) {
 		webp.Encode(&buf, img, &webp.Options{Lossless: true})
 	case "gif":
 		gif.Encode(&buf, img, nil)
+	case "ico":
+		ico.Encode(&buf, img)
 	}
 
 	return buf, nil
