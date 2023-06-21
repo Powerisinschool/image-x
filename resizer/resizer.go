@@ -2,6 +2,7 @@ package resizer
 
 import (
 	"bytes"
+	"errors"
 	"image"
 
 	"github.com/chai2010/webp"
@@ -26,6 +27,8 @@ func Resize(img image.Image, width, height int, quality string) (bytes.Buffer, e
 		scaler = draw.BiLinear
 	case "best":
 		scaler = draw.CatmullRom
+	default:
+		return buf, errors.New("invalid quality")
 	}
 
 	// Resize the image to the dst image's size and return it

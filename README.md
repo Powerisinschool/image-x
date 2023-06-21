@@ -7,7 +7,6 @@ This is an API for image conversion, built using Go and the Gin framework.
 The API documentation is generated using Swagger/OpenAPI and can be accessed at the following endpoint:
 [ImageX Docs](https://imagex.toluolagunju.tech/docs/index.html)
 
-
 ## Installation
 
 1. Clone the repository:
@@ -54,7 +53,7 @@ Convert the image format by sending a POST request to '/api/convert' endpoint wi
 Example request using cURL:
 
 ```bash
-curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" http://imagex.toluolagunju.tech/api/convert
+curl -X POST -F "file=@/path/to/image.jpg" -F "format=png" https://imagex.toluolagunju.tech/api/convert
 ```
 
 ### Resize Image
@@ -69,6 +68,24 @@ Resize the image by sending a POST request to '/api/resize' endpoint with the fo
 Example request using cURL:
 
 ```bash
-curl -X POST -F "file=@/path/to/image.jpg" -F "width=800" -F "height=600" -F "quality=80" http://imagex.toluolagunju.tech/api/resize
+curl -X POST -F "file=@/path/to/image.jpg" -F "width=800" -F "height=600" -F "quality=high" https://imagex.toluolagunju.tech/api/resize
 ```
 
+### Apply Filter to Image
+
+Apply the specified filter to the image by sending a POST request to '/api/filter' endpoint with the following parameters:
+
+- `file`: Image file to apply the filter (multipart/form-data)
+- `filter`: Filter to apply: grayscale, sepia, blur, sharpen (multipart/form-data)
+
+For the `blur` filter, you can also specify the blur radius using the `radius` query parameter (Defaults to 2).
+
+Example request using cURL:
+
+```bash
+curl -X POST -F "file=@/path/to/image.jpg" -F "filter=grayscale" https://imagex.toluolagunju.tech/api/filter
+```
+
+**Note:** The supported filters are 'grayscale', 'sepia', 'blur', and 'sharpen'.
+
+The response will be the filtered image.
