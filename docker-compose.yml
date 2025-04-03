@@ -9,7 +9,7 @@ services:
     ports:
       - "5001:8080"  # Adjust the port if needed
     volumes:
-      - .:/app  # Mounts local directory for live changes (optional)
+      - ./data:/app  # Mounts local directory for live changes (optional)
     environment:
       - CGO_ENABLED=1
       - GOOS=linux
